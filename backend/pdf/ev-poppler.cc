@@ -445,7 +445,11 @@ pdf_page_render (PopplerPage     *page,
 	poppler_page_render (page, cr);
 
 	cairo_set_operator (cr, CAIRO_OPERATOR_DEST_OVER);
-	cairo_set_source_rgb (cr, 1., 1., 1.);
+
+	/* gnome's dark bg color is #373737
+	 * 0x37 = 55
+	 * 1 - 55 / 256 = 0.79 */
+	cairo_set_source_rgb (cr, .79, .79, .79);
 	cairo_paint (cr);
 
 	cairo_destroy (cr);
